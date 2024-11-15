@@ -1,0 +1,105 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f6f9;
+    color: #333;
+    margin: 0;
+  }
+  
+  .chat-container {
+    width: 400px;
+    max-width: 100%;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+  }
+  
+  .chatbox {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .chatbox p {
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    background-color: #e6eff7;
+    max-width: 80%;
+    word-wrap: break-word;
+  }
+  
+  .input-container {
+    display: flex;
+    padding: 12px;
+    background-color: #ffffff;
+    border-top: 1px solid #ddd;
+  }
+  
+  .message-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-right: 10px;
+    font-size: 16px;
+    color: #555;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  .message-input:focus {
+    border-color: #007bff;
+  }
+  
+  .send-btn {
+    padding: 12px 18px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .send-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .send-btn:disabled {
+    background-color: #d6d6d6;
+    cursor: not-allowed;
+  }
+  
+  /* Animación y estilo para el chatbox */
+  .chatbox {
+    padding-bottom: 20px; /* Espacio adicional para los mensajes */
+  }
+  
+  .chatbox p {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .chatbox p:nth-child(even) {
+    background-color: #e6f7e6; /* Mensajes alternos con color diferente */
+  }
+  
+  .chatbox p:nth-child(odd) {
+    background-color: #e6eff7; /* Mensajes alternos con otro color */
+  }
+  

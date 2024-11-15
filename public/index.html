@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat en Vivo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="chat-container">
+    <div id="chatbox" class="chatbox"></div>
+    <div class="input-container">
+      <input type="text" id="message" class="message-input" placeholder="Escribe un mensaje..." autocomplete="off">
+      <button id="send" class="send-btn">Enviar</button>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+
+    // Solicitar el nombre de usuario al cliente
+    const username = prompt('Introduce tu nombre de usuario');
+    socket.emit('set username', username);
+
+    // Enviar un mensaje al servidor
+    document.getElementById('send').onclick = function() {
+      const msg = document.getElementById('message').value;
+      if(msg.trim() !== '') {
+        socket.emit('chat message', msg);
+        document.getElementById('message').value = ''; // Limpiar el campo
+      }
+    };
+
+    // Recibir y mostrar mensajes
+    socket.on('chat message', function(msg) {
+      const chatbox = document.getElementById('chatbox');
+      const messageElement = document.createElement('p');
+      messageElement.textContent = msg;
+      chatbox.appendChild(messageElement);
+      chatbox.scrollTop = chatbox.scrollHeight; // Scroll automático hacia el último mensaje
+    });
+  </script>
+</body>
+</html>
